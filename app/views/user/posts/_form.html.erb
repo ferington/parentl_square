@@ -1,0 +1,33 @@
+<%= form_with model: @user_post, class: "bg-white py-5 rounded-md trix-content" do |f| %>
+  <% if @user_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @user_post.errors.count %> 件のエラーが発生しました:</h2>
+      <ul>
+        <% @user_post.errors[:title].each do |message| %>
+          <li><%= "タイトルが記載されていません" %></li>
+        <% end %>
+      </ul>
+      <ul>
+        <% @user_post.errors[:content].each do |message| %>
+          <li><%= "紹介文が記載されていません" %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="mb-3">
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :content, "紹介文" %>
+    <%= f.rich_text_area :content, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.submit @user_post.new_record? ? "投稿する" : "更新する", class: "font-semibold py-2 px-4 rounded text-white bg-sky-600 hover:bg-sky-500 cursor-pointer" %>
+  </div>
+
+<% end %>

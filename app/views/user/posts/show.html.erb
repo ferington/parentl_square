@@ -1,0 +1,11 @@
+<div class="mb-3 max-w-2xl text-left mx-auto">
+  <div class="my-8 text-3xl">
+  　<p id="notice"><%= notice %></p>
+    <h1><%= @user_post.title %></h1>
+  </div>
+  <div class="mb-3 post-content">
+    <%= @user_post.content %>
+  </div>
+</div>
+<%= link_to '編集', edit_user_post_path(@user_post) %> |
+<%= link_to '戻る', user_posts_path %>

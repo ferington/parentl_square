@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :user do
+    resources :posts, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+  end
   scope module: :user do
     root to: 'homes#top'
     get "about" => "homes#about", as:"about"
