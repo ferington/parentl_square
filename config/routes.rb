@@ -1,23 +1,25 @@
 Rails.application.routes.draw do
 
-  namespace :user do
-    resources :posts, only: [:index, :show, :new, :edit, :create, :update, :destroy]
-  end
-  scope module: :user do
-    root to: 'homes#top'
-    get "about" => "homes#about", as:"about"
-    
-    
-  end
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
   }
 
-  devise_for :customers, controllers: {
+   devise_for :customers, controllers: {
     registrations: "user/registrations",
     sessions: 'user/sessions'
   }
 
+  namespace :admin do
+
+
+  end
+  scope module: :user do
+    root to: 'homes#top'
+    get "about" => "homes#about", as:"about"
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :posts
+
+  end
 
 
 

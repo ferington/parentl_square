@@ -1,11 +1,15 @@
 <div class="mb-3 max-w-2xl text-left mx-auto">
   <div class="my-8 text-3xl">
-  　<p id="notice"><%= notice %></p>
+    <p id="notice"><%= notice %></p>
     <h1><%= @user_post.title %></h1>
   </div>
   <div class="mb-3 post-content">
+    <%= render "static_rate", user_post: @user_post %>
+    <% if current_customer && current_customer.id == @user_post.customer_id %>
+    <%= link_to '編集', edit_post_path(@user_post) %> |
+    <%= link_to '削除', post_path(@user_post), method: :delete, data: { confirm: '本当に削除しますか?' } %>
+  <% end %>
     <%= @user_post.content %>
   </div>
+  <%= link_to '戻る', posts_path %>
 </div>
-<%= link_to '編集', edit_user_post_path(@user_post) %> |
-<%= link_to '戻る', user_posts_path %>
