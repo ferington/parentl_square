@@ -4,11 +4,17 @@ class User::PostsController < ApplicationController
   # GET /user/posts or /user/posts.json
   def index
   #  @user_posts = current_customer.posts
+     @posts = Post.all
+
      @user_posts = Post.all
   end
 
   # GET /user/posts/1 or /user/posts/1.json
   def show
+    @user_post = Post.find(params[:id])
+    @tag_list = @user_post.tags.pluck(:name).join('、')
+    @user_post_tags = @user_post.tags
+
     @user_post = Post.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: "指定されたポストが見つかりません。"
@@ -17,6 +23,7 @@ class User::PostsController < ApplicationController
   # GET /user/posts/new
   def new
     @user_post = Post.new
+  #  @tag_list = @user_post.tags.pluck(:name).join(',')
   end
 
   # GET /user/posts/1/edit
@@ -26,12 +33,16 @@ class User::PostsController < ApplicationController
   # POST /user/posts or /user/posts.json
   def create
     @user_post = current_customer.posts.new(user_post_params)
+    # 受け取った値を,で区切って配列にする
+    tag_list = params[:post][:name].present? ? params[:post][:name].split('、') : []
 
     respond_to do |format|
-      if @user_post.save!
-        format.html { redirect_to post_url(@user_post), notice: "投稿が正常に作成されました" }
+      if @user_post.save
+        @user_post.save_tags(tag_list)
+        format.html { redirect_to post_url(@user_post), notice: "投稿が完了しました" }
         format.json { render :show, status: :created, location: @user_post }
       else
+        # バリデーションエラーなど、保存が失敗した場合の処理
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @user_post.errors, status: :unprocessable_entity }
       end
@@ -59,6 +70,12 @@ class User::PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: "投稿を削除しました" }
       format.json { head :no_content }
     end
+  end
+
+  def search_tag
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @posts = @tag.posts
   end
 
   private

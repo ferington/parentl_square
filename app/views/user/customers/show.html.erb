@@ -1,23 +1,41 @@
-<div class="col-md-8 offset-md-1">
-      <table >
-        <h2>投稿レビュー</h2>
-        <thead>
-          <tr>
-            <th>紹介文</th>
-            <th>評価</th>
-            <th clspan="3"></th>
-          </tr>
-        </thead>
-        
-        <tbody>
-          <% @posts.each do |post| %>
-            <tr>             
-              <td><%= link_to post.title, post_path(post.id)%></td>
-             <%# <td><%= render 'user/posts/static_rate', user_post: user_post %></td>         
-              <td><%= link_to '編集', edit_post_path(post) %></td>
-              <td><%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+<div class="container mt-5">
+  <div class="row">
+    <!-- サイドバー -->
+    <div class="col-md-4 mb-3">
+      <div class="sticky-top" style="top: 20px;">
+        <%= render 'sidebar', customer: @customer %>
+      </div>
     </div>
+    
+    <!-- メインコンテンツ -->
+    <div class="col-md-8">
+      <h2 class="mb-4">投稿レビュー</h2>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th>投稿者</th>
+              <th>紹介文</th>
+              <th>評価</th>
+              <th colspan="2"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |post| %>
+                <tr>
+                  <td class="align-middle">
+                    <%= image_tag post.customer.get_profile_image(80,80), class: "img-fluid rounded-circle" %><br>
+                    <%= post.customer.name %>
+                  </td>
+                  <td class="align-middle"><%= link_to post.title, post_path(post.id) %></td>
+                  <td><%= render 'user/posts/static_rate', user_post: post %></td>
+                  <td class="align-middle"><%= link_to '編集', edit_post_path(post), class: "btn btn-warning" %></td>
+                  <td class="align-middle"><%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "btn btn-danger" %></td>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

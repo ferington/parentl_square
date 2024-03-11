@@ -1,2 +1,39 @@
-<h1>User::Customers#edit</h1>
-<p>Find me in app/views/user/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+      <h2>プロフィール編集</h2>
+      <% if @customer.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <%= @customer.errors.count %> errors
+          <ul>
+            <% @customer.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= form_with model: @customer, class: 'mt-3' do |f| %>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><label for="inputName">ユーザー名</label></td>
+              <td><%= f.text_field :name, autofocus: true, id: "inputName", placeholder: "名前", class: 'form-control' %></td>
+            </tr>
+            <tr>
+              <td><label for="inputImage">プロフィール画像</label></td>
+              <td><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class: 'form-control-file' %></td>
+            </tr>
+            <tr>
+              <td><label for="introduction">自己紹介</label></td>
+              <td><%= f.text_area :introduction, autofocus: true, id: "introduction", rows: 5, class: 'form-control' %></td>
+            </tr>
+          </tbody>
+        </table>
+        <%= f.submit "変更を保存", class: 'btn btn-primary' %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

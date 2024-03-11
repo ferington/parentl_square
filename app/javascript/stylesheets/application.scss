@@ -1,0 +1,18 @@
+@use '~bootstrap/scss/bootstrap';
+
+
+
+.sidebar {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-right: 1px solid #ddd;
+}
+
+.half-width {
+    width: 500px; /* 現在の親要素に対して幅を50%に設定 */
+}
+
+.custom-width {
+    width: 600px;
+}
+

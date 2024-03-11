@@ -1,0 +1,26 @@
+<h4>ユーザー情報</h4>
+  <table class="table post-index">
+    <thead>
+      <tr>
+        <%= image_tag customer.get_profile_image(100,100) %>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>ユーザー</th>
+        <th><%= customer.name %></th>
+      </tr>
+      <tr>
+        <th>自己紹介</th>
+        <th><%= customer.introduction %></th>
+      </tr>
+      <tr>
+        <th>
+          <%= link_to edit_customer_path(customer), class: "btn btn-outline-secondary btn-block" do %>
+            <i class="fa-solid fa-user-gear"></i>
+          <% end %>
+        </th>
+      </tr>
+  </table>
+
+

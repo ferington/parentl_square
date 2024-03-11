@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :tasks
+  
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
   }
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
   scope module: :user do
     root to: 'homes#top'
     get "about" => "homes#about", as:"about"
+    get "search_tag" => "post#search_tag"
     resources :customers, only: [:index, :show, :edit, :update]
     resources :posts
 
