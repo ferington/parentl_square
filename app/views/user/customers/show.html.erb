@@ -22,7 +22,10 @@
                     <%= post.customer.name %>
                   </td>
                   <td class="align-middle"><%= link_to post.title, post_path(post.id) %></td>
+                  <!--おすすめリスト-->
                   <td><%= render 'user/posts/static_rate', user_post: post %></td>
+                  <!--いいねリスト-->
+                  <td><%= render "user/favorites/btn", post: post %></td>
                   <td class="align-middle"><%= link_to '編集', edit_post_path(post), class: "text-white btn btn-warning" %></td>
                   <td class="align-middle"><%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "text-white btn btn-danger" %></td>
                 </tr>

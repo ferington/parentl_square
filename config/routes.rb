@@ -20,8 +20,9 @@ Rails.application.routes.draw do
     get "about" => "homes#about", as:"about"
     get '/search_tag', to: 'posts#search_tag'
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :posts
-
+    resources :posts do
+      resource :favorites, only: [:create, :destroy]
+    end
   end
 
 

@@ -5,6 +5,11 @@ class Post < ApplicationRecord
   
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
+  has_many :favorites, dependent: :destroy
+  
+  def favorited_by?(customer)
+    favorites.exists?(customer_id: customer.id)
+  end
   
   def save_tags(tags)
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
@@ -19,6 +24,9 @@ class Post < ApplicationRecord
       tag = Tag.find_or_create_by(name: new_name )
       self.tags << tag
     end
+    
+    
+    
   end
   
   validates :title, presence: true

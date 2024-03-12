@@ -1,38 +1,43 @@
 <div class="container mt-5"> <!-- コンテナのマージントップを追加 -->
   <h2>タグが<%=@tag.name%>の投稿レビュー一覧</h2>
-         <div>タグ一覧</div>
-  <!--タグリストをカードで表示-->
-  <div class="row">
-    <% @tag_list.each do |tag| %>
-      <div class="col-md-2">
-        <div class="card mb-2 shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">
-              <i class="fa-sharp fa-solid fa-tag"></i>
-              <%= link_to tag.name, search_tag_path(tag_id: tag.id) %>
-            </h5>
-            <p class="card-text"><%= tag.posts.count %>件の投稿</p>
+  <div class="my-4">
+    <h5 class="mb-2">タグ一覧</h5>
+    <!--タグリストをカードで表示-->
+    <div class="row">
+      <% @tag_list.each do |tag| %>
+        <div class="col-md-2">
+          <div class="card mb-2 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="fa-sharp fa-solid fa-tag"></i>
+                <%= link_to tag.name, search_tag_path(tag_id: tag.id) %>
+              </h5>
+              <p class="card-text"><%= tag.posts.count %>件の投稿</p>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 
-  <!--投稿レビューをカードで表示-->
-  <div class="row">
-    <% @posts.each do |post| %>
-      <div class="col-md-4 ">
-        <div class="card mb-1 shadow"> <!-- カードのマージンボトムを調整 -->
-          <div class="card-body">
-            <p class="card-text">
-              <%= truncate(post.content.to_plain_text, length: 100) %>
-              <td><%= render 'user/posts/static_rate', user_post: post %></td>
-            </p>
-
-            <%= link_to '詳細を表示', post_path(post), class: 'text-white btn btn-primary' %>
+  <!--投稿レビュー表示-->
+  <div class="my-4"> 
+    <h5 class="mb-3">レビュー一覧</h5> 
+    <div class="row">
+      <% @posts.each do |post| %>
+        <div class="col-md-4">
+          <div class="card mb-1 shadow"> <!-- カードのマージンボトムを調整 -->
+            <div class="card-body">
+              <p class="card-text">
+                <%= truncate(post.content.to_plain_text, length: 100) %>
+                <div><%= render 'user/posts/static_rate', user_post: post %></div>
+                <div><%= render "user/favorites/btn", post: post %></div>
+              </p>
+              <%= link_to '詳細を表示', post_path(post), class: 'text-white btn btn-primary' %>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

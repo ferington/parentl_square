@@ -14,7 +14,7 @@
           <th>ユーザー</th>
           <th>タイトル</th>
           <th>おすすめど</th>
-          <th colspan="3"></th>
+          <th colspan="6"></th>
         </tr>
       </thead>
       <tbody>
@@ -29,6 +29,7 @@
               </div>
             </td>
             <td><%= link_to user_post.title, post_path(user_post), class: 'link-primary' %></td>
+            <!--おすすめリスト-->
             <td><%= render 'user/posts/static_rate', user_post: user_post %></td>
             <!--タグリスト-->
             <td>
@@ -37,6 +38,10 @@
                 <%= link_to tag.name, search_tag_path(tag_id: tag.id) %>
                 <%="(#{tag.posts.count})" %>
               <% end %>
+            </td>
+            <!--いいねリスト-->
+            <td id="favorite_btn_<%= user_post.id %>">
+              <%= render "user/favorites/btn", post: user_post %>
             </td>
           </tr>
         <% end %>
