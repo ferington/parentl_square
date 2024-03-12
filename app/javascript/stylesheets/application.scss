@@ -3,16 +3,25 @@
 
 
 .sidebar {
-  padding: 20px;
+  padding: 10px;
   background-color: #f5f5f5;
   border-right: 1px solid #ddd;
 }
 
+/* タグフォームの幅調整 */
 .half-width {
-    width: 500px; /* 現在の親要素に対して幅を50%に設定 */
+    width: 500px; 
 }
-
+/* 本文フォームの幅調整 */
 .custom-width {
     width: 600px;
+}
+/* 各種ボタン内文字の大きさ調整 */
+.large-text {
+  font-size: 21px; 
+}
+/* 投稿者以外がURLから別の投稿者の画面に入ろうとする時のエラーメッセージを赤に設定 */
+.alert-custom {
+  color: red; 
 }
 

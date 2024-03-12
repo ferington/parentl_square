@@ -1,6 +1,11 @@
 <div class="container mt-3">
+  <% flash.each do |key, message| %>
+    <div class="alert <%= ' alert-danger' if key == 'notice' %> <%= 'alert-danger' if key == 'alert' %> alert-custom">
+      <%= message %>
+    </div>
+  <% end %>
   <h1 class="mb-4">レビュー投稿一覧</h1>
-  <%= link_to 'レビュー投稿', new_post_path, class: 'btn btn-primary mb-3' %>
+  <%= link_to 'レビュー投稿', new_post_path, class: ' text-white btn btn-primary mb-3 large-text' %>
 
   <div class="table-responsive">
     <table class="table table-hover">

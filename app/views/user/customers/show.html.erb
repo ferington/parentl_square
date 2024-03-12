@@ -1,11 +1,5 @@
 <div class="container mt-5">
-  <div class="row">
-    <!-- サイドバー -->
-    <div class="col-md-4 mb-3">
-      <div class="sticky-top" style="top: 20px;">
-        <%= render 'sidebar', customer: @customer %>
-      </div>
-    </div>
+  <div class="row">    
     
     <!-- メインコンテンツ -->
     <div class="col-md-8">
@@ -29,8 +23,8 @@
                   </td>
                   <td class="align-middle"><%= link_to post.title, post_path(post.id) %></td>
                   <td><%= render 'user/posts/static_rate', user_post: post %></td>
-                  <td class="align-middle"><%= link_to '編集', edit_post_path(post), class: "btn btn-warning" %></td>
-                  <td class="align-middle"><%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "btn btn-danger" %></td>
+                  <td class="align-middle"><%= link_to '編集', edit_post_path(post), class: "text-white btn btn-warning" %></td>
+                  <td class="align-middle"><%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "text-white btn btn-danger" %></td>
                 </tr>
             <% end %>
           </tbody>

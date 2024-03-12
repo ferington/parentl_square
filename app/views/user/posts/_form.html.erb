@@ -27,7 +27,7 @@
 
   <% if user_post.id.nil? %>
     <div class="form-group" id="star">
-      <%= f.label "評価" %>
+      <%= f.label "おすすめ" %>
       <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
       <div id="post_raty"></div>
     </div>
@@ -58,7 +58,7 @@
   </div>
 
   <div class="mb-3">
-    <%= f.submit @user_post.new_record? ? "投稿する" : "更新する", class: "font-semibold py-2 px-4 rounded text-white bg-sky-600 hover:bg-sky-500 cursor-pointer" %>
+    <%= f.submit @user_post.new_record? ? "投稿する" : "更新する", class: "font-semibold py-2 px-4 rounded text-black bg-cyan hover:bg-cyan cursor-pointer" %>
   </div>
 
 <% end %>

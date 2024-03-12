@@ -12,10 +12,20 @@
   </head>
 
   <body>
-    <%= render "layouts/header" %>
-  <main>
-    <%= yield %>
-  </main>
+  <%= render "layouts/header" %>
+  
+  <div class="d-flex">
+    <!-- サイドバー -->
+    <div class="sidebar col-md-2 ">
+      <div class="sticky-top" style="top: 20px;">
+        <%= render 'user/customers/sidebar', customer: @customer %>
+      </div>
+    </div>
 
-  </body>
+    <!-- メインコンテンツ -->
+    <main class="main-content flex-grow-1">
+      <%= yield %>
+    </main>
+  </div>
+</body>
 </html>

@@ -1,6 +1,17 @@
-<h1>レビュー編集</h1>
-
-<%= render 'form', user_post: @user_post %>
-
-<%= link_to 'レビュー記事', @user_post %> |
-<%= link_to '戻る', posts_path %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1>レビュー編集</h1>
+      <div class=" my-4">
+        
+        <%= render 'form', user_post: @user_post %>
+      </div>
+      <table class="table">
+        <tr>
+          <td class="text-center"><%= link_to 'レビュー投稿文に戻る', @user_post %></td>
+          <td class="text-center"><%= link_to 'レビュー投稿一覧に戻る', posts_path %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,12 @@
 class User::PostsController < ApplicationController
   before_action :set_user_post, only: %i[ show edit update destroy ]
+  before_action :check_user, only: [:edit]
 
   # GET /user/posts or /user/posts.json
   def index
   #  @user_posts = current_customer.posts
-     @posts = Post.all
-
-     @user_posts = Post.all
+    @posts = Post.all
+    @user_posts = Post.all
   end
 
   # GET /user/posts/1 or /user/posts/1.json
@@ -28,6 +28,8 @@ class User::PostsController < ApplicationController
 
   # GET /user/posts/1/edit
   def edit
+    @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:name).join(',')
   end
 
   # POST /user/posts or /user/posts.json
@@ -73,8 +75,8 @@ class User::PostsController < ApplicationController
   end
 
   def search_tag
-    @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
+    @tag_list = Tag.all
     @posts = @tag.posts
   end
 
@@ -87,5 +89,11 @@ class User::PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_post_params
       params.require(:post).permit(:title, :content, :star)
+    end
+    
+    def check_user
+      unless @user_post.customer_id == current_customer.id
+        redirect_to posts_path, notice: 'アクセス権限がありません。'
+      end
     end
 end

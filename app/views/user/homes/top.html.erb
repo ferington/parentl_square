@@ -1,2 +1,14 @@
+<% if flash[:notice] %>
+  <div class="alert alert-info">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 <h1>おやこのひろば</h1>
-<p>知育菓子について</p>
+
+　<p></p>
+　
+
+
+
+    <%= link_to "新規登録", new_customer_registration_path %>
+    <%= link_to "ログイン", new_customer_session_path %>
