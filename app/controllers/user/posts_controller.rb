@@ -5,8 +5,18 @@ class User::PostsController < ApplicationController
   # GET /user/posts or /user/posts.json
   def index
   #  @user_posts = current_customer.posts
-    @posts = Post.all
-    @user_posts = Post.all
+  #  @posts = Post.all
+  #  @user_posts = Post.all
+
+    if params[:latest]
+      @user_posts = Post.latest
+    elsif params[:old]
+      @user_posts = Post.old
+    elsif params[:star_count]
+      @user_posts = Post.star_count
+    else
+      @user_posts = Post.page(params[:page]).per(8)
+    end
   end
 
   # GET /user/posts/1 or /user/posts/1.json
@@ -90,10 +100,10 @@ class User::PostsController < ApplicationController
     def user_post_params
       params.require(:post).permit(:title, :content, :star)
     end
-    
+
     def check_user
       unless @user_post.customer_id == current_customer.id
-        redirect_to posts_path, notice: 'アクセス権限がありません。'
+        redirect_to posts_path, alert: 'アクセス権限がありません。'
       end
     end
 end
