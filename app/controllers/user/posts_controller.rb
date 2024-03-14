@@ -5,15 +5,15 @@ class User::PostsController < ApplicationController
   # GET /user/posts or /user/posts.json
   def index
   #  @user_posts = current_customer.posts
-  #  @posts = Post.all
+    @posts = Post.all
   #  @user_posts = Post.all
-
+  # <!--ソート機能のコード-->
     if params[:latest]
-      @user_posts = Post.latest
+      @user_posts = Post.latest.page(params[:page]).per(8)
     elsif params[:old]
-      @user_posts = Post.old
+      @user_posts = Post.old.page(params[:page]).per(8)
     elsif params[:star_count]
-      @user_posts = Post.star_count
+      @user_posts = Post.star_count.page(params[:page]).per(8)
     else
       @user_posts = Post.page(params[:page]).per(8)
     end
@@ -21,11 +21,15 @@ class User::PostsController < ApplicationController
 
   # GET /user/posts/1 or /user/posts/1.json
   def show
+  # <!--タグ投稿のコード-->
     @user_post = Post.find(params[:id])
     @tag_list = @user_post.tags.pluck(:name).join('、')
     @user_post_tags = @user_post.tags
-
+  # <!--コメント投稿-->
+    @post_comment = PostComment.new
+  # <!--投稿文code-->
     @user_post = Post.find(params[:id])
+  # <!--投稿者以外がURLから入ろうとしたときのエラー文-->
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: "指定されたポストが見つかりません。"
   end

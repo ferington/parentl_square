@@ -1,24 +1,23 @@
-<div class="container mt-5"> <!-- コンテナのマージントップを追加 -->
+<div class="container mt-5">
   <h2>タグが<%=@tag.name%>の投稿レビュー一覧</h2>
-  <div class="my-4">
-    <h5 class="mb-2">タグ一覧</h5>
-    <!--タグリストをカードで表示-->
-    <div class="row">
-      <% @tag_list.each do |tag| %>
-        <div class="col-md-2">
-          <div class="card mb-2 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">
-                <i class="fa-sharp fa-solid fa-tag"></i>
-                <%= link_to tag.name, search_tag_path(tag_id: tag.id) %>
-              </h5>
-              <p class="card-text"><%= tag.posts.count %>件の投稿</p>
-            </div>
+ <div class="my-4">
+  <h5 class="mb-2">投稿タグ一覧</h5>
+  <div class="row">
+    <% @tag_list.each do |tag| %>
+      <div class="col-auto mb-3"> 
+        <div class="card"> 
+          <div class="card-body">
+            <h5 class="card-title">
+              <i class="fa-sharp fa-solid fa-tag"></i>
+              <%= link_to tag.name, search_tag_path(tag_id: tag.id) %>
+            </h5>
+            <p class="card-text"><%= tag.posts.count %>件の投稿</p>
           </div>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
+</div>
 
   <!--投稿レビュー表示-->
   <div class="my-4"> 

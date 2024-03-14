@@ -1,16 +1,28 @@
-<div class="container mt-3">
+
+ 
   <% flash.each do |key, message| %>
     <div class="alert <%= ' alert' if key == 'notice' %> <%= 'alert-danger' if key == 'alert' %>">
       <%= message %>
     </div>
   <% end %>
+    <!-- サイドバー -->
+  <div class="d-flex">  
+    <div class="sidebar col-md-2.5">
+      <div class="sticky-top" style="top: 20px;">
+        <%= render 'user/customers/sidebar', customer: @customer %>
+      </div>
+    </div>
+ 
+ <div class="container mt-3"> 
   <h1 class="mb-4">レビュー投稿一覧</h1>
   <%= link_to 'レビュー投稿', new_post_path, class: ' text-white btn btn-primary mb-3 large-text' %>
+  
   <tr>
     <tb><%= link_to '新しい順', posts_path(latest: "true") %></td>
     <tb>|<%= link_to '古い順', posts_path(old: "true") %></td>
     <tb>|<%= link_to '評価の高い順', posts_path(star_count: "true") %></td>
   </tr>
+
   <div class="table-responsive">
     <table class="table table-hover">
       <thead class="thead-dark">
@@ -44,17 +56,19 @@
               <% end %>
             </td>
             <!--いいねリスト-->
-            <td id="user_favorite_btn_<%= user_post.id %>">
+            <td id="favorite_btn_<%= user_post.id %>">
               <%= render "user/favorites/btn", post: user_post %>
             </td>
+            <td>コメント数： <%= user_post.post_comments.count %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
-  <%#<% if @user_posts.present? %>
-  <%#<div class="d-flex justify-content-center">
-    <%#<%= paginate @user_posts, class: "pagination justify-content-center" %>
-  <%#</div>
-<% end %>
+  <% if @user_posts.present? %>
+    <div class="d-flex justify-content-center">
+  <%= paginate @user_posts, class: "pagination justify-content-center" %>
+    </div>
+  <% end %>
+  </div>
 </div>
