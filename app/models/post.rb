@@ -2,20 +2,20 @@ class Post < ApplicationRecord
   has_rich_text :content
 
   belongs_to :customer
-  
+
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
-  
+
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
   scope :star_count, -> {order(star: :desc)}
-  
+
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end
-  
+
   def save_tags(tags)
     current_tags = self.tags.pluck(:name) unless self.tags.nil?
     old_tags = current_tags - tags
@@ -29,10 +29,25 @@ class Post < ApplicationRecord
       tag = Tag.find_or_create_by(name: new_name )
       self.tags << tag
     end
-    
+  end
+
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Post.where(title: content)
+    elsif method == 'forward'
+      Post.where('name LIKE ?', content + '%')
+    elsif method == 'backward'
+      Post.where('name LIKE ?', '%' + content)
+    else
+      Post.where('name LIKE ?', '%' + content + '%')
+    end
   end
   
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
   validates :title, presence: true
   validates :content, presence: true
-  
+
 end

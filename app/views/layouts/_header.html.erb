@@ -1,15 +1,54 @@
-<header>
-<br>
-<br>
-  <% if customer_signed_in? %>
-    <%= link_to "マイページ", customer_path(current_customer) %>
-    <%= link_to "ユーザー一覧" %>
-    <%= link_to "投稿一覧",  posts_path %>
-    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-  <% else %>
-    <%= link_to "About", about_path %>
-    <%= link_to "投稿一覧",  posts_path %>
-    <%= link_to "新規登録", new_customer_registration_path %>
-    <%= link_to "ログイン", new_customer_session_path %>
-  <% end %>
-</header>
+<nav class="navbar navbar-expand-lg" style="background-color: darkorange;">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light" href="#">おやこのひろば</a>
+      
+      <ul class="navbar-nav">
+        <% if admin_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+          </li>
+        <% elsif request.fullpath.include?("/admin") %>
+          <li class="nav-item">
+            <%= link_to root_path, class: 'nav-link text-light' do %>
+              <i class="fas fa-home"></i> Home
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "新規登録", new_admin_registration_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_admin_session_path, class: 'nav-link text-light' %>
+          </li>
+        <% elsif customer_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "マイページ", customer_path(current_customer), class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ユーザー一覧", customers_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "投稿一覧", posts_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-light' %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to root_path, class: 'nav-link text-light' do %>
+              <i class="fas fa-home"></i> Home
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "About", about_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-light' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

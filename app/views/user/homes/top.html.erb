@@ -1,14 +1,17 @@
-<% if flash[:notice] %>
-  <div class="alert alert-info">
-    <%= flash[:notice] %>
+<div class="container mt-4 ">
+  <% if flash[:notice] %>
+    <div class="alert alert-info">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+  <h1 class="mb-4">おやこのひろば</h1>
+
+  <div class="row">
+    <div class="col-md-7">
+      <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "text-white btn btn-secondary btn-sm btn-block mb-3", method: :post %>
+      <%= link_to "新規登録", new_customer_registration_path, class: "text-white btn btn-success btn-sm btn-block mb-3" %>
+      <%= link_to "ログイン", new_customer_session_path, class: "text-white btn btn-primary btn-sm btn-block mb-3" %>
+    </div>
   </div>
-<% end %>
-<h1>おやこのひろば</h1>
 
-　<p></p>
-　
-
-
-
-    <%= link_to "新規登録", new_customer_registration_path %>
-    <%= link_to "ログイン", new_customer_session_path %>
+</div>

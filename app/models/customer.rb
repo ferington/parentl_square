@@ -17,4 +17,29 @@ class Customer < ApplicationRecord
     end
       profile_image.variant(resize_to_limit: [width, height]).processed
   end
+  
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+  
+  GUEST_USER_EMAIL = "guest@example.com"
+
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+  
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Customer.where(name: content)
+    elsif method == 'forward'
+      Customer.where('name LIKE ?', content + '%')
+    elsif method == 'backward'
+      Customer.where('name LIKE ?', '%' + content)
+    else
+      Customser.where('name LIKE ?', '%' + content + '%')
+    end
+  end
 end

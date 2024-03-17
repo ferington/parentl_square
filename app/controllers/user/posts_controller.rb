@@ -5,7 +5,7 @@ class User::PostsController < ApplicationController
   # GET /user/posts or /user/posts.json
   def index
   #  @user_posts = current_customer.posts
-    @posts = Post.all
+    @posts = Post.where(is_deleted: false)
   #  @user_posts = Post.all
   # <!--ソート機能のコード-->
     if params[:latest]
@@ -27,7 +27,7 @@ class User::PostsController < ApplicationController
     @user_post_tags = @user_post.tags
   # <!--コメント投稿-->
     @post_comment = PostComment.new
-  # <!--投稿文code-->
+  # <!--紹介文-->
     @user_post = Post.find(params[:id])
   # <!--投稿者以外がURLから入ろうとしたときのエラー文-->
   rescue ActiveRecord::RecordNotFound
@@ -51,7 +51,6 @@ class User::PostsController < ApplicationController
     @user_post = current_customer.posts.new(user_post_params)
     # 受け取った値を,で区切って配列にする
     tag_list = params[:post][:name].present? ? params[:post][:name].split('、') : []
-
     respond_to do |format|
       if @user_post.save
         @user_post.save_tags(tag_list)
@@ -67,8 +66,10 @@ class User::PostsController < ApplicationController
 
   # PATCH/PUT /user/posts/1 or /user/posts/1.json
   def update
+    tag_list = params[:post][:name].present? ? params[:post][:name].split('、') : []
     respond_to do |format|
       if @user_post.update(user_post_params)
+        @user_post.save_tags(tag_list)
         format.html { redirect_to post_url(@user_post), notice: "投稿は正常に更新されました" }
         format.json { render :show, status: :ok, location: @user_post }
       else
@@ -89,6 +90,7 @@ class User::PostsController < ApplicationController
   end
 
   def search_tag
+    @posts = Post.all
     @tag = Tag.find(params[:tag_id])
     @tag_list = Tag.all
     @posts = @tag.posts

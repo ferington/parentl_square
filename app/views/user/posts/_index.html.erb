@@ -5,7 +5,7 @@
       <%= render 'user/customers/sidebar', customer: @customer %>
     </div>
   </div>
-  
+
   <div class="container">
     <div class="row">
       <% flash.each do |key, message| %>
@@ -35,7 +35,7 @@
               </tr>
             </thead>
             <tbody>
-              <% @user_posts.each do |user_post| %>
+              <% user_posts.each do |user_post| %>
                 <tr>
                   <td>
                     <div class="media">

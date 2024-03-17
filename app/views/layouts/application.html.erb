@@ -12,12 +12,16 @@
   </head>
 
   <body>
-  <%= render "layouts/header" %>
-
+    <header>
+      <%= render "layouts/header" %>
+    </header>
+      <div class="d-flex justify-content-center mb-2">
+        <%= render "user/searches/form" %>
+      </div>
     <!-- メインコンテンツ -->
-    <main >
+    <main>
       <%= yield %>
     </main>
 
-</body>
+ </body>
 </html>

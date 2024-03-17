@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+      <% flash.each do |key, message| %>
+        <div class="alert <%= 'alert-success' if key == 'notice' %> <%= 'alert-danger' if key == 'alert' %>" role="alert">
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
+</div>
+<div class="container mt-5">
+<h3>投稿レビュー一覧</h3>
+<%= link_to '戻る', admin_home_path, class: "text-white btn btn-secondary" %>
+<table class="table mt-3">
+  <tr>
+    <th>名前</th>
+    <th>コメント</th>
+    <th colspan="2"></th>    
+  </tr>
+<% @user_posts.each do |user_post| %>
+  <tr>
+    <td class="col-2"><%= user_post.customer.name %></td> 
+    <td class="col-6"><%= user_post.content %></td> 
+    <td class="col-2"><%= user_post.created_at.strftime('%Y/%m/%d') %></td>
+    <td class="col-2">
+      <%= link_to '削除', admin_post_path(user_post), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "btn btn-sm btn-danger" %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+</div>

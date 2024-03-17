@@ -1,9 +1,7 @@
  <%# コメント一覧表示 #%>
-
 <table>
   <tbody>
     <% @user_post.post_comments.each do |post_comment| %>
-
     <tr>
       <td>
         <%= link_to customer_path(post_comment.customer) do %>
@@ -14,9 +12,9 @@
       <td><%= post_comment.comment %></td>
       <td>
          <% if post_comment.customer == current_customer %>
-           <%= link_to "Destroy", post_post_comment_path(@user_post, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %>
+           <%= link_to "取り消し", post_post_comment_path(@user_post, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end" %>
          <% end %>
-        </td> %>
+        </td>
     </tr>
    <% end %>
   </tbody>

@@ -1,6 +1,13 @@
+      <!-- サイドバー -->
+<div class="d-flex">
+  <div class="sidebar col-md-2.5">
+    <div class="sticky-top" style="top: 20px;">
+      <%= render 'user/customers/sidebar', customer: @customer %>
+    </div>
+  </div>
 <div class="container mt-5">
-  <div class="row">    
-    
+  <div class="row">
+
     <!-- メインコンテンツ -->
     <div class="col-md-8">
       <h2 class="mb-4">投稿レビュー</h2>
@@ -26,8 +33,14 @@
                   <td><%= render 'user/posts/static_rate', user_post: post %></td>
                   <!--いいねリスト-->
                   <td><%= render "user/favorites/btn", post: post %></td>
-                  <td class="align-middle"><%= link_to '編集', edit_post_path(post), class: "text-white btn btn-warning" %></td>
-                  <td class="align-middle"><%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "text-white btn btn-danger" %></td>
+                  <% if current_customer == post.customer %>
+                  <td class="align-middle">
+                    <%= link_to '編集', edit_post_path(post), class: "text-white btn btn-warning" %>
+                  </td>
+                  <td class="align-middle">
+                    <%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "text-white btn btn-danger" %>
+                  </td>
+                <% end %>
                 </tr>
             <% end %>
           </tbody>

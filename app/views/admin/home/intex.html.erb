@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+      <% flash.each do |key, message| %>
+        <div class="alert <%= 'alert-success' if key == 'notice' %> <%= 'alert-danger' if key == 'alert' %>" role="alert">
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
+</div>
+<div class="container mt-5">
+  <h1 class="mb-4">管理者機能一覧</h1>
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">登録ユーザー一覧</h5>
+          <p class="card-text">現在すでに登録されているユーザーの一覧を表示します。</p>
+          <%= link_to "表示", admin_customers_path, class: "text-white btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">投稿レビュー一覧</h5>
+          <p class="card-text">ユーザーからの投稿をレビューするための一覧です。</p>
+          <%= link_to "レビュー", admin_posts_path, class: "text-white btn btn-secondary" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">コメント一覧</h5>
+          <p class="card-text">ユーザーが投稿したコメントの一覧を確認できます。</p>
+          <%= link_to "確認", admin_post_comments_path, class: "text-white btn btn-success" %>
+        </div>
+      </div>
+    </div>
+    <!-- 他のカードを追加する場所 -->
+  </div>
+</div>

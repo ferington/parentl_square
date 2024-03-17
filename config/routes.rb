@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :tasks
-  
+  namespace :admin do
+    
+    get 'home/intex' => 'home#intex', as: 'home'
+    resources :post_comments, only: [:index, :destroy]
+    resources :posts, only: [:index, :destroy]
+    resources :customers, only: [:index, :destroy]
+  end
+
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
   }
@@ -11,6 +17,10 @@ Rails.application.routes.draw do
     sessions: 'user/sessions'
   }
 
+  devise_scope :customer do
+    post "users/guest_sign_in", to: "user/sessions#guest_sign_in"
+  end
+
   namespace :admin do
 
 
@@ -19,11 +29,18 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get "about" => "homes#about", as:"about"
     get '/search_tag', to: 'posts#search_tag'
+    get  '/customers/check' => 'customers#check'
+    get "/search", to: "searches#search"
+    # 論理削除用のルーティング
+    patch  '/customers/withdraw' => 'customers#withdraw'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :posts do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
+
+
+
   end
 
 

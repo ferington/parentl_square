@@ -8,6 +8,7 @@
       <div class="mb-3 post-content">
 
         <%= render "static_rate", user_post: @user_post %>
+        <td>コメント数： <%= @user_post.post_comments.count %></td>
         <!-- タグリスト表示 -->
         <div class="d-flex flex-row flex-wrap mb-3">
           <% if @user_post_tags.present? %>
@@ -21,12 +22,13 @@
         </div>
         <!-- 下記投稿分 -->
         <% if current_customer && current_customer.id == @user_post.customer_id %>
-          <div class="mt-5">
+          
+          <div class="mt-2">
             <%= link_to '編集', edit_post_path(@user_post), class: "text-white btn btn-primary me-2" %>
             <%= link_to '削除', post_path(@user_post), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "text-white btn btn-danger" %>
           </div>
         <% end %>
-        <td>コメント数： <%= @user_post.post_comments.count %></td>
+        
         <%= @user_post.content %>
       </div>
       <%= link_to '戻る', posts_path, class: "text-white btn btn-secondary" %>

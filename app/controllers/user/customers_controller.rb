@@ -1,5 +1,9 @@
 class User::CustomersController < ApplicationController
   def index
+    @customers = Customer.where(is_deleted: false)
+    @customer = current_customer
+    @post = Post.new
+    @pusts = Post.all
   end
 
   def show
@@ -10,8 +14,8 @@ class User::CustomersController < ApplicationController
   def edit
     @customer = Customer.find(params[:id])
   end
-  
-  def update    
+
+  def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       flash[:notice] = "プロフィールの編集しました"
@@ -21,10 +25,20 @@ class User::CustomersController < ApplicationController
     end
   end
 
+  def withdraw
+    @customer = Customer.find(current_customer.id)
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @customer.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
+  end
+
   private
 
   def customer_params
     params.require(:customer).permit(:name, :profile_image, :introduction)
   end
-  
+
+
 end

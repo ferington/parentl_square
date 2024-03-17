@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_03_14_071809) do
+ActiveRecord::Schema.define(version: 2024_03_17_110410) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2024_03_14_071809) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "introduction"
+    t.boolean "is_deleted", default: false, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -89,6 +90,7 @@ ActiveRecord::Schema.define(version: 2024_03_14_071809) do
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_deleted"
   end
 
   create_table "post_tags", force: :cascade do |t|
@@ -107,6 +109,7 @@ ActiveRecord::Schema.define(version: 2024_03_14_071809) do
     t.float "star", default: 0.0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_deleted"
   end
 
   create_table "tags", force: :cascade do |t|

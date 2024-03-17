@@ -7,7 +7,7 @@
     </thead>
     <tbody>
       <tr>
-        <th >ユーザー</th> 
+        <th >ユーザー</th>
         <th><%= customer.name %></th>
       </tr>
       <tr>
@@ -16,13 +16,20 @@
       <tr>
         <th><%= customer.introduction %></th>
       </tr>
+        <% if customer == current_customer %>
       <tr>
         <th>
           <%= link_to edit_customer_path(customer), class: "btn btn-outline-secondary btn-block" do %>
-            <i class="fa-solid fa-user-gear"></i>
+            <i class="fa-solid fa-user-gear"></i> プロフィール編集
           <% end %>
         </th>
       </tr>
+      <tr>
+        <th>
+          <%= link_to "退会する", customers_withdraw_path, method: :patch, data: { confirm: "本当に退会しますか？" }, class: "text-white btn btn-danger btn-block" %>
+        </th>
+      </tr>
+        <% end %>
   </table>
 
 
