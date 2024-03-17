@@ -1,31 +1,39 @@
-<!-- サイドバー -->
-<div class="d-flex">
-  <div class="sidebar col-md-2.5">
-    <div class="sticky-top" style="top: 20px;">
-      <%= render 'user/customers/sidebar', customer: @customer %>
-    </div>
-  </div>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-8 offset-md-1">
-      <table class="table book-index">
-        <h2>ユーザー一覧</h2>
-          <thead>
-            <th>プロフィール画像</th>
-            <th>ユーザー名</th>
-            <th colspan="3"></th>
-          </thead>
-          <tbody>
-            <% @customers.each do |customer| %>
-              <tr>
-                <td><%= image_tag customer.get_profile_image(80,80) %></td>
-                <td><%= customer.name %></td>
-                <td><%= link_to "投稿レビュー一覧", customer_path(customer.id) %></td>
-              </tr>
-          <% end %>
-        </tbody>
-      </table>
+
+    <!-- サイドバー -->
+    <div class="col-md-2">
+      <div class="sidebar sticky-top" style="top: 20px;">
+        <%= render 'user/customers/sidebar', customer: @customer %>
+      </div>
     </div>
+
+    <!-- メインコンテンツ -->
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>ユーザー一覧</h2>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="thead-light">
+                <th>プロフィール画像</th>
+                <th>ユーザー名</th>
+                <th colspan="3"></th>
+              </thead>
+              <tbody>
+                <% @customers.each do |customer| %>
+                  <tr>
+                    <td><%= image_tag customer.get_profile_image(80,80) %></td>
+                    <td><%= customer.name %></td>
+                    <td><%= link_to "投稿レビュー一覧", customer_path(customer.id) %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div> 
+      </div>
+    </div>
+
   </div>
 </div>
-

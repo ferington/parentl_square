@@ -15,13 +15,12 @@
     <header>
       <%= render "layouts/header" %>
     </header>
-      <div class="d-flex justify-content-center mb-2">
-        <%= render "user/searches/form" %>
-      </div>
-    <!-- メインコンテンツ -->
-    <main>
-      <%= yield %>
-    </main>
 
- </body>
+    <!-- メインコンテンツ -->  
+      <%= yield %>
+      
+  </body>
+    <footer>
+      <%= render "layouts/footer" %>
+    </footer>
 </html>

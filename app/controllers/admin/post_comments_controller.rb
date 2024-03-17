@@ -1,6 +1,5 @@
 class Admin::PostCommentsController < ApplicationController
   def index
-
     @post_comments = PostComment.joins(:customer).where(customers: {is_deleted: false})
     @customers = Customer.where(is_deleted: false)
   end

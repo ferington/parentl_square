@@ -8,7 +8,6 @@
 }
 
 
-
 /* タグフォームの幅調整 */
 .half-width {
     width: 500px; 
@@ -20,6 +19,30 @@
 /* 各種ボタン内文字の大きさ調整 */
 .large-text {
   font-size: 21px; 
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto; 
+  
+  background-color: darkorange;
+  color: white;
+  width: 100%;
+  
+}
+
+footer p {
+  margin: 0; 
+  padding: 15px 0; 
 }
 
 
