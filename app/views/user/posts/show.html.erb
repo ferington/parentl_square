@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8 ">
       <div class="mb-3">
         <p id="notice"><%= notice %></p>
         <h1><%= @user_post.title %></h1>
@@ -8,7 +8,9 @@
       <div class="mb-3 post-content">
 
         <%= render "static_rate", user_post: @user_post %>
-        <td>コメント数： <%= @user_post.post_comments.count %></td>
+        <div id="comment_number">
+          <%= render "user/post_comments/number", user_post: @user_post %>
+        </div>
         <!-- タグリスト表示 -->
         <div class="d-flex flex-row flex-wrap mb-3">
           <% if @user_post_tags.present? %>
@@ -33,11 +35,13 @@
       </div>
       <%= link_to '戻る', posts_path, class: "text-white btn btn-secondary" %>
       <div class="md-5">
-      <tr>
-        <th><%= render "user/post_comments/index", post: @post %></th>
-        <th><%= render "user/post_comments/comment", post: @post, post_comment: @post_comment %></th>
-        <th><%= link_to '戻る', posts_path, class: "text-white btn btn-secondary" %></th>        
-      </tr>
+      <div id="comment_index">
+        <div><%= render "user/post_comments/index", user_post: @user_post %></div>
+      </div>
+      <div>
+        <div><%= render "user/post_comments/comment", user_post: @user_post, post_comment: @post_comment %></div>
+        <div><%= link_to '戻る', posts_path, class: "text-white btn btn-secondary" %></div>
+      </div>
     </div>
     </div>
     

@@ -9,6 +9,8 @@ class Customer < ApplicationRecord
   has_many :posts
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  has_many :entries, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -29,6 +31,10 @@ class Customer < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
       user.name = "guestuser"
     end
+  end
+  
+  def guest_user?
+    email == GUEST_USER_EMAIL
   end
   
   def self.search_for(content, method)

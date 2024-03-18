@@ -57,7 +57,9 @@
                   <td id="favorite_btn_<%= user_post.id %>">
                     <%= render "user/favorites/btn", post: user_post %>
                   </td>
-                  <td>コメント数： <%= user_post.post_comments.count %></td>
+                  <td>
+                    <%= render "user/post_comments/number", user_post: user_post %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>

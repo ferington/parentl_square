@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    
+  namespace :admin do   
     get 'home/intex' => 'home#intex', as: 'home'
     resources :post_comments, only: [:index, :destroy]
     resources :posts, only: [:index, :destroy]
@@ -34,6 +33,8 @@ Rails.application.routes.draw do
     # 論理削除用のルーティング
     patch  '/customers/withdraw' => 'customers#withdraw'
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :messages, only: [:create]
+    resources :rooms, only: [:create, :index, :show]
     resources :posts do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]

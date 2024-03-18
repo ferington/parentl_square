@@ -29,3 +29,4 @@ require("@rails/actiontext")
 require("jquery") 
 
 window.$ = window.jQuery = require('jquery');
+

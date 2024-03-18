@@ -1,0 +1,3 @@
+$('#comment_number').html("<%= j(render '/user/post_comments/number', user_post: @post) %>");
+$('#comment_index').html("<%= j(render '/user/post_comments/index', user_post: @post) %>");
+$('#comment_textarea').val("");

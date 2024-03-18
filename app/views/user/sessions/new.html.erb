@@ -1,4 +1,13 @@
 <div class="container">
+    <div class="row">
+      <% flash.each do |key, message| %>
+        <div class="alert <%= 'alert-success' if key == 'notice' %> <%= 'alert-danger' if key == 'alert' %>" role="alert">
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
+</div>
+<div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-12 col-md-10 col-lg-8" style="max-width: 75%;">
       <div class="card my-5">
