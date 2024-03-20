@@ -1,24 +1,40 @@
-# README
+当ポートフォリオは、架空の店舗、団体、素材であることを前提とております
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# 親子のあそびば
 
-Things you may want to cover:
+## サイト概要  (知育菓子×レビューサイト)
+### サイトテーマ
+・ 興味のある知育菓子の検索ができ、投稿時に自身の評価をつけ投稿が出来るレビューサイトです。
 
-* Ruby version
+​
+### テーマを選んだ理由
+　前職にて、知育菓子に興味がある方、実際に試した方と接客する機会があり、興味を持ったのがきっかけです.  
+　その中で、知育菓子に関する総合サイトのような物がなくて困っているという方が多くいました。  
+　同様の悩みを持つ方は多いと感じたため、何歳から、どんな子に向いているかわかるサイトがあると便利ではないかと考えました。  
+　また、興味を持った時の予備知識としても使うことが出来ると思ったため、このテーマを選びました。
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### ターゲットユーザ
+* 子育て世代の知育菓子に興味、使ってみたいと思っている方
+* 物作り好きな方
+* 親子で一緒に作ってみたい方
+​
+### 主な利用シーン
+* 商品についての知識を知りたい時
+* 商品についてコメント、レビューを行う時
+* アレンジレシピを投稿する時
+​
+## 設計書
+ 後日導入予定
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+​
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
