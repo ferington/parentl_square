@@ -7,9 +7,9 @@ class Admin::CustomersController < ApplicationController
     @post = Post.find_by(id: params[:id])  
     if @post
       @post.destroy
-      redirect_to admin_posts_path, notice: '登録ユーザーを削除されました。'
+      redirect_to admin_customers_path, notice: '登録ユーザーを削除されました。'
     else
-      redirect_to admin_posts_path, alert: 'ユーザーが見つかりませんでした。'
+      redirect_to admin_customers_path, alert: 'ユーザーが見つかりませんでした。'
     end
   end
 end
