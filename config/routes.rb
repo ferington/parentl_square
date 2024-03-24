@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :customer do
-    post "users/guest_sign_in", to: "user/sessions#guest_sign_in"
+    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
 
   namespace :admin do
