@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :admin do   
+  namespace :admin do
     get 'home/intex' => 'home#intex', as: 'home'
     resources :post_comments, only: [:index, :destroy]
     resources :posts, only: [:index, :destroy]
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :customer do
-    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+    post "users/guest_sign_in", to: "user/sessions#guest_sign_in"
   end
 
   namespace :admin do
@@ -40,11 +40,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
 
-
-
   end
-
-
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

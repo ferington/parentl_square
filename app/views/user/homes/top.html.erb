@@ -1,18 +1,25 @@
-<div class="container mt-4 ">
-  <% if flash[:notice] %>
+<div class="container mt-4 text-center"> <!-- コンテンツを中央揃えにし、全てをこのコンテナ内に配置 -->
+
+  <% if flash[:notice] %> <!-- 通知メッセージがある場合は表示 -->
     <div class="alert alert-info">
       <%= flash[:notice] %>
     </div>
   <% end %>
-  <h1 class="mb-4">おやこのひろば</h1>
- 
-
-  <div class="row">
+  
+  <!-- 画像を表示する行、画像は原寸の半分の大きさで表示 -->
+  <div class="row justify-content-center"> 
+    <div class="col-12">
+      <%= image_tag "top.jpg", class: "img-fluid", style: "max-width: 50%; height: auto;" %>
+    </div>
+  </div>
+  <br>
+  
+  <!-- ボタンを配置する行 -->
+  <div class="row justify-content-center">
     <div class="col-md-7">
       <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "text-white btn btn-secondary btn-sm btn-block mb-3", method: :post %>
       <%= link_to "新規登録", new_customer_registration_path, class: "text-white btn btn-success btn-sm btn-block mb-3" %>
       <%= link_to "ログイン", new_customer_session_path, class: "text-white btn btn-primary btn-sm btn-block mb-3" %>
     </div>
   </div>
-
 </div>
