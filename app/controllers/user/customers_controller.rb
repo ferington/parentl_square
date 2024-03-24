@@ -1,7 +1,7 @@
 class User::CustomersController < ApplicationController
-  
-  before_action :ensure_guest_user, only: [:edit, :withdraw]
-  
+
+  before_action :ensure_guest_user, only: [:edit]
+
   def index
     @customers = Customer.where(is_deleted: false)
     @customer = current_customer
@@ -27,7 +27,7 @@ class User::CustomersController < ApplicationController
       render :edit
     end
   end
-
+  
   def withdraw
     @customer = Customer.find(current_customer.id)
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
@@ -42,12 +42,12 @@ class User::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:name, :profile_image, :introduction)
   end
-  
+
   def ensure_guest_user
     @customer = Customer.find(params[:id])
     if @customer.guest_user?
       redirect_to customer_path(current_customer) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
-  end  
+  end
 
 end
