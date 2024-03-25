@@ -23,7 +23,6 @@ end
 coco = Customer.find_or_create_by!(email: "13@1") do |customer|
   customer.name = "coco"
   customer.password = "kumakuma"
-  customer.introduction = "よきかな
   customer.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/test3.jpg"), filename:"test3.jpg")
 end
 
