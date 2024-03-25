@@ -49,5 +49,16 @@ footer p {
   padding: 15px 0; 
 }
 
+.flash-messages {
+  position: fixed;
+  top: 22;
+  width: 50%;
+  z-index: 20; /* サイトの他の要素より上に表示 */
+}
+
+.alert {
+  margin: 0 auto;
+  width: fit-content;
+}
 
 

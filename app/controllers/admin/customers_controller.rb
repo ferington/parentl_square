@@ -4,9 +4,9 @@ class Admin::CustomersController < ApplicationController
   end
   
   def destroy
-    @post = Post.find_by(id: params[:id])  
-    if @post
-      @post.destroy
+    @customer = Customer.find_by(id: params[:id])  
+    if @customer
+      @customer.destroy
       redirect_to admin_customers_path, notice: '登録ユーザーを削除されました。'
     else
       redirect_to admin_customers_path, alert: 'ユーザーが見つかりませんでした。'

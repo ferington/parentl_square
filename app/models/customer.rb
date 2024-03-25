@@ -11,6 +11,8 @@ class Customer < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :messages, dependent: :destroy
+  # スコープモジュールを使用したis_delered以外の分を表示させるやり方
+  # scope :active, -> { where(is_deleted: false) }
 
   def get_profile_image(width, height)
     unless profile_image.attached?

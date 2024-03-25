@@ -29,6 +29,7 @@
     <h5 class="mb-2 ">投稿タグ一覧</h5>
     <div class="row">
       <% @tag_list.each do |tag| %>
+        <% next if tag.posts.count == 0 %>
         <div class="col-auto mb-3">
           <div>
             <h5>
@@ -60,4 +61,4 @@
 <%#          </div>
         </div>
       <% end %>
-  
+
