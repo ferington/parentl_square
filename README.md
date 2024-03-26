@@ -26,8 +26,6 @@
 
 ## ER図
 
-![スクリーンショット 2024-03-27 005136](https://github.com/ferington/parentl_square/assets/155619800/37baa41e-29f9-4896-ab6c-32f586d3a40f)
-
 
  https://app.diagrams.net/#G16GHiRBDC9bYhnf2UYjNIcMaqG_NKdhRi#%7B%22pageId%22%3A%22R2lEEEUBdFMjLlhIrx00%22%7D
 
