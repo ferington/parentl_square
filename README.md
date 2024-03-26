@@ -25,8 +25,7 @@
 * アレンジレシピを投稿する時
 
 ## ER図
- https://app.diagrams.net/#G16GHiRBDC9bYhnf2UYjNIcMaqG_NKdhRi#%7B%22pageId%22%3A%22R2lEEEUBdFMjLlhIrx00%22%7D
-
+  
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
