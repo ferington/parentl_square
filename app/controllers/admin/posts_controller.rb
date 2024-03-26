@@ -8,9 +8,9 @@ class Admin::PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])  
     if @post
       @post.destroy
-      redirect_to admin_posts_path, notice: '投稿を正常に削除されました。'
+      redirect_to admin_posts_path, notice: '投稿レビューを正常に削除されました'
     else
-      redirect_to admin_posts_path, alert: '投稿が見つかりませんでした。'
+      redirect_to admin_posts_path, alert: '投稿レビューが見つかりませんでした'
     end
   end
 end

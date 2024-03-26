@@ -8,9 +8,9 @@ class Admin::PostCommentsController < ApplicationController
     @post_comment = PostComment.find(params[:id])
     if @post_comment
       @post_comment.destroy
-      redirect_to admin_post_comments_path, notice: 'コメントを正常に削除されました。'
+      redirect_to admin_post_comments_path, notice: 'コメントを正常に削除されました'
     else
-      redirect_to admin_post_comments_path, alert: 'コメントが見つかりませんでした。'
+      redirect_to admin_post_comments_path, alert: 'コメントが見つかりませんでした'
     end
   end
 end
