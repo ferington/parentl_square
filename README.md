@@ -25,6 +25,8 @@
 * アレンジレシピを投稿する時
 
 ## ER図
+![ER図](https://github.com/ferington/parentl_square/assets/155619800/c672e2c1-b5f5-410a-88e0-3dcbafd755d8)
+
  https://app.diagrams.net/#G16GHiRBDC9bYhnf2UYjNIcMaqG_NKdhRi#%7B%22pageId%22%3A%22R2lEEEUBdFMjLlhIrx00%22%7D
 
 ## 開発環境
