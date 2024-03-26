@@ -102,7 +102,7 @@ Post.find_or_create_by!(title: "パンヤさん") do |post|
 すごくおもしろいですよ<br>
 付属のトッピングだけでなく自宅にあるものも使えます<br>
 <br>
-レンジも使うので一緒に作るのがおすすめです<br>
+レンジも使うので一緒に作るのがおすすめです
 TEXT
   post.customer = hiro
   post.star = 2.5
