@@ -1,4 +1,4 @@
-       name: Rails CI/CD
+name: Rails CI/CD
 
 on:
   push:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/setup-node@v3
-    - name: Deploy 
+    - name: Deploy
       env:
         PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         USER_NAME: ${{ secrets.USER_NAME }}
