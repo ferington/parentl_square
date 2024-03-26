@@ -8,6 +8,18 @@
 
 puts "seedの実行を開始"
 
+ # admin用ログインユーザー
+Admin.find_or_create_by!(email: "a@a") do |admin|
+  admin.password = "142536"
+end
+
+ # test用ログインユーザー
+test = Customer.find_or_create_by!(email: "s@s") do |customer|
+  customer.name = "test"
+  customer.password = "142536"
+  customer.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/user.jpg"), filename:"user.jpg")
+end
+
 nao = Customer.find_or_create_by!(email: "11@1") do |customer|
   customer.name = "nao"
   customer.password = "kumakuma"

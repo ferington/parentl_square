@@ -1,33 +1,25 @@
-<div class="container-fluid">
-  <div class="row">
-
-    <!-- サイドバー -->
-    <div class="col-md-2">
-      <div class="sidebar sticky-top" style="top: 20px;">
-        <%= render 'user/customers/sidebar', customer: @customer %>
-      </div>
+<!-- サイドバー -->
+<div class="d-flex">
+  <div class="sidebar col-md-2.5">
+    <div class="sidebar sticky-top" style="top: 20px;">
+      <%= render 'user/customers/sidebar', customer: @customer %>
     </div>
-    
-    <div class="flash-messages">
-  <% flash.each do |key, message| %>
-    <div class="alert <%= 'alert-success' if key == 'notice' %> <%= 'alert-danger' if key == 'alert' %>" role="alert">
-      <%= message %>
-    </div>
-  <% end %>
-</div>
-
-    
-    <div class="col-md-10">
-      <!-- ヘッダー -->
-      <div class="row">
-        <div class="col-12">
-          <h2 class="mb-4 mt-5">投稿レビュー</h2>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <% flash.each do |key, message| %>
+        <div class="alert <%= 'alert-success' if key == 'notice' %> <%= 'alert-danger' if key == 'alert' %>" role="alert">
+          <%= message %>
         </div>
-      </div>
-
+      <% end %>
+    </div>
+    
+    <div class="container mt-3">
+      <h2 class="mb-3">投稿レビュー</h2>
       <!-- ユーザー一覧 -->
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-10">
           <div class="table-responsive">
             <table class="table table-hover">
               <thead class="thead-light">
@@ -35,22 +27,31 @@
                   <th>投稿者</th>
                   <th>紹介文</th>
                   <th>評価</th>
-                  <th colspan="3"></th>
+                  <th colspan="4"></th>
                 </tr>
               </thead>
               <tbody>
                 <% @posts.each do |post| %>
-                    <tr>
-                      <td class="align-middle">
-                        <%= image_tag post.customer.get_profile_image(80,80), class: "img-fluid rounded-circle" %><br>
-                        <%= post.customer.name %>
-                      </td>
-                      <td class="align-middle"><%= link_to post.title, post_path(post.id) %></td>
-                      <td><%= render 'user/posts/static_rate', user_post: post %></td>
-                      <td id="favorite_btn_<%= post.id %>">
-                        <%= render "user/favorites/btn", post: post %>
-                      </td>
-                      <% if current_customer == post.customer %>
+                  <tr>
+                    <td class="align-middle">
+                      <%= image_tag post.customer.get_profile_image(80,80), class: "img-fluid rounded-circle" %><br>
+                      <%= post.customer.name %>
+                    </td>
+                    <td class="align-middle">
+                      <%= link_to post.title, post_path(post.id) %>
+                    </td>
+                    <td>
+                      <%= render 'user/posts/static_rate', user_post: post %>
+                    </td>
+                    <td id="favorite_btn_<%= post.id %>">
+                      <%= render "user/favorites/btn", post: post %>
+                    </td>
+                    <td>
+                      <% @posts.each do |post| %>
+                        <%= render partial: 'user/post_comments/number', locals: { user_post: post } %>
+                      <% end %>   
+                    </td>
+                    <% if current_customer == post.customer %>
                       <td class="align-middle">
                         <%= link_to '編集', edit_post_path(post), class: "text-white btn btn-warning" %>
                       </td>
@@ -58,7 +59,7 @@
                         <%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "text-white btn btn-danger" %>
                       </td>
                     <% end %>
-                    </tr>
+                  </tr>
                 <% end %>
               </tbody>
             </table>
