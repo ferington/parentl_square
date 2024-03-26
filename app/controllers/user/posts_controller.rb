@@ -31,7 +31,7 @@ class User::PostsController < ApplicationController
     @user_post = Post.find(params[:id])
   # <!--投稿者以外がURLから入ろうとしたときのエラー文-->
   rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, alert: "指定されたポストが見つかりません。"
+    redirect_to root_path, alert: "指定されたポストが見つかりません"
   end
 
   # GET /user/posts/new
@@ -109,7 +109,7 @@ class User::PostsController < ApplicationController
 
     def check_user
       unless @user_post.customer_id == current_customer.id
-        redirect_to posts_path, alert: 'アクセス権限がありません。'
+        redirect_to posts_path, alert: 'アクセス権限がありません'
       end
     end
 end
