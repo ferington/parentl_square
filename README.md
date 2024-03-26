@@ -27,9 +27,6 @@
 ## ER図
 ![スクリーンショット 2024-03-27 005136](https://github.com/ferington/parentl_square/assets/155619800/04036104-0059-4fea-b71e-5cb2a569bbe6)
 
-
- https://app.diagrams.net/#G16GHiRBDC9bYhnf2UYjNIcMaqG_NKdhRi#%7B%22pageId%22%3A%22R2lEEEUBdFMjLlhIrx00%22%7D
-
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
