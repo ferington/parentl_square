@@ -7,7 +7,7 @@
   [おやこのあそびば][linkref]
 
 [linkref]: https://parental-square.com/
-　
+
 ## サイト概要  (知育菓子×レビューサイト)
 
 ### サイトテーマ
