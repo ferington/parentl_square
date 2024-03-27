@@ -12,19 +12,21 @@
 <%= link_to '戻る', admin_home_path, class: "text-white btn btn-secondary" %>
 <table class="table mt-3">
   <tr>
+    <th>登録写真</th>
     <th>ユーザー</th>
     <th>タイトル</th>
     <th>レビュー文</th>
-    <th>投稿日<th>    
-    <th colspan="2"></th>    
+    <th>投稿日<th>
+    <th colspan="2"></th>
   </tr>
 <% @user_posts.each do |user_post| %>
   <tr>
-    <td class="col-1"><%= user_post.customer.name %></td> 
-    <td class="col-2"><%= user_post.title %></td> 
-    <td class="col-6"><%= user_post.content %></td> 
+    <td class="col-1"><%= image_tag user_post.customer.get_profile_image(80,80), class: "img-fluid rounded-circle" %></td>
+    <td class="col-1"><%= user_post.customer.name %></td>
+    <td class="col-2"><%= user_post.title %></td>
+    <td class="col-5"><%= user_post.content %></td>
     <td class="col-1"><%= user_post.created_at.strftime('%Y/%m/%d') %></td>
-    <td class="col-1"><%= render "user/post_comments/number", user_post: user_post %></td>   
+    <td class="col-1"><%= render "user/post_comments/number", user_post: user_post %></td>
     <td class="col-1">
       <%= link_to '削除', admin_post_path(user_post), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "text-white btn btn-sm btn-danger" %>
     </td>

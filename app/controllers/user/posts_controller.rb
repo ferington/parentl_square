@@ -21,7 +21,7 @@ class User::PostsController < ApplicationController
 
   # GET /user/posts/1 or /user/posts/1.json
   def show
-  # <!--タグ投稿のコード-->
+  # <!--タグ投稿-->
     @user_post = Post.find(params[:id])
     @tag_list = @user_post.tags.pluck(:name).join('、')
     @user_post_tags = @user_post.tags
