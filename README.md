@@ -5,7 +5,9 @@
 ## サイト概要  (知育菓子×レビューサイト)
 
 ###　URL
-　[linkref]: https://parental-square.com/"おやこのあそびば"　
+  [おやこのあそびば][linkref]
+
+[linkref]: https://parental-square.com/
 　
 ### サイトテーマ
  興味のある知育菓子の検索ができ、投稿時に自身の評価をつけ投稿が出来るレビューサイトです。
