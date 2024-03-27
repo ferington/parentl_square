@@ -1,10 +1,10 @@
 当ポートフォリオは、架空の店舗、団体、素材であることを前提とております
 
-# おやこのあそびば
+# おやこのひろば
 
 ### URL  
   AWS EC2リンク  
-  [おやこのあそびば][linkref]
+  [おやこのひろば][linkref]
 
 [linkref]: https://parental-square.com/
 
