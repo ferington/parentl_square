@@ -1,14 +1,14 @@
 <nav class="navbar navbar-expand-lg" style="background-color: darkorange;">
   <div class="container-fluid">
     <a class="navbar-brand text-light" href="#"><i class="fa-brands fa-old-republic"></i>おやこのひろば</a>
-    
+
 
       <ul class="navbar-nav">
         <!--admin側ヘッダー-->
         <% if admin_signed_in? %>
           <li class="nav-item">
             <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-right-from-bracket"></i>ログアウト
+              <i class="fa-solid fa-right-from-bracket"></i> ログアウト
             <% end %>
           </li>
         <% elsif request.fullpath.include?("/admin") %>
@@ -45,12 +45,12 @@
           </li>
           <li class="nav-item">
             <%= link_to posts_path, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-blog"></i>投稿一覧
+              <i class="fa-solid fa-blog"></i> 投稿一覧
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to  destroy_customer_session_path, method: :delete, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-right-from-bracket"></i>ログアウト
+              <i class="fa-solid fa-right-from-bracket"></i> ログアウト
             <% end %>
           </li>
         <% else %>
@@ -61,12 +61,12 @@
           </li>
           <li class="nav-item">
             <%= link_to about_path, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-link"></i> About
+              <i class="fa-solid fa-link"></i> 知育菓子について
             <%end %>
           </li>
           <li class="nav-item">
             <%= link_to new_customer_registration_path, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-user-plus"></i>新規登録
+              <i class="fa-solid fa-user-plus"></i> 新規登録
             <% end %>
           </li>
           <li class="nav-item">
