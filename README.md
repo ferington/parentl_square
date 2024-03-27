@@ -4,7 +4,8 @@
 
 ## サイト概要  (知育菓子×レビューサイト)
 
-###　URL
+### URL  
+  AWS EC2リンク  
   [おやこのあそびば][linkref]
 
 [linkref]: https://parental-square.com/
