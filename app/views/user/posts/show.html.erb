@@ -3,8 +3,7 @@
     <!-- 左の余白 -->
     <div class="col-md-1"></div>
     
-    <!-- 投稿内容セクション -->
-    <div class="col-md-10">
+    <!-- 投稿内容セクション -->  
       <div class="col-md-8">
         <div class="mb-3">
           <p id="notice"><%= notice %></p>
@@ -33,12 +32,11 @@
           <% end %>
           <%= @user_post.content %>
           <%= link_to '戻る', posts_path, class: "text-white btn btn-secondary" %>
-        </div>
+        </div>   
       </div>
-    </div>
 
     <!-- コメントセクション -->
-    <div class="col-md-10">
+    <div class="col-md-8">
       <div class="col-md-8 mt-3">
         <div class="md-5">
           <div id="comment_index">
