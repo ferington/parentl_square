@@ -30,7 +30,8 @@
 * アレンジレシピを投稿する時：オリジナルのアイデアや工夫を他のユーザーと共有したい時
  
 ## ER図
-![スクリーンショット 2024-03-27 005136](https://github.com/ferington/parentl_square/assets/155619800/04036104-0059-4fea-b71e-5cb2a569bbe6)
+![ER図2ト 2024-03-28 141624](https://github.com/ferington/parentl_square/assets/155619800/3237274b-9cec-45cb-84e0-1a3c9c56bc92)
+
 
 ## 開発環境
 - OS：Linux(CentOS)
