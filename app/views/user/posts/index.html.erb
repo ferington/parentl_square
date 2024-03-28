@@ -1,11 +1,10 @@
-<!-- サイドバー -->
 <div class="d-flex">
   <div class="sidebar col-md-2.5">
     <div class="sticky-top" style="top: 20px;">
       <%= render 'user/customers/sidebar', customer: @customer %>
     </div>
   </div>
-  
+
   <div class="container">
     <div class="row">
       <% flash.each do |key, message| %>
@@ -16,7 +15,11 @@
 
       <div class="container mt-3">
         <h1 class="mb-4">レビュー投稿一覧</h1>
-        <%= link_to 'レビュー投稿', new_post_path, class: 'text-white btn btn-primary mb-3 large-text' %>
+        <% if @customer == current_customer %>
+          <% unless @customer.guest_user? %>
+            <%= link_to 'レビュー投稿', new_post_path, class: 'text-white btn btn-primary mb-3 large-text' %>
+          <% end %>
+        <% end %>
         <div>
           <%= link_to '新しい順', posts_path(latest: "true") %> |
           <%= link_to '古い順', posts_path(old: "true") %> |
