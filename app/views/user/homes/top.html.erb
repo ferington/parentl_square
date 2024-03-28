@@ -1,6 +1,6 @@
-<div class="container mt-4 text-center"> <!-- コンテンツを中央揃えにし、全てをこのコンテナ内に配置 -->
+<div class="container mt-4 text-center"> <!-- コンテンツを中央揃え -->
 
-  <% if flash[:notice] %> <!-- 通知メッセージがある場合は表示 -->
+  <% if flash[:notice] %> 
     <div class="alert alert-info">
       <%= flash[:notice] %>
     </div>
@@ -9,7 +9,7 @@
   <!-- 画像を表示 -->
   <div class="row justify-content-center"> 
     <div class="col-12">
-      <%= image_tag "top.jpg", class: "img-fluid", style: "max-width: 55%; height: auto;" %>
+      <%= image_tag "top.jpg", class: "img-fluid", style: "max-width: 80%; height: auto;" %>
     </div>
   </div>
   <br>
