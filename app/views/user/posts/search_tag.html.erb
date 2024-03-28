@@ -7,7 +7,9 @@
         <div class="col-md-4">
           <div class="card mb-1 shadow">
             <div class="card-body">
-              <p class="card-text">
+              <div>投稿者:<%= post.customer.name %></div>
+              <div>タイトル：<%= post.title %></div>
+              <p class="card-text">レビュー文<br>
                 <%= truncate(post.content.to_plain_text, length: 100) %>
                 <div><%= render 'user/posts/static_rate', user_post: post %></div>
                 <div id="favorite_btn_<%= post.id %>">
