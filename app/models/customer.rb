@@ -11,7 +11,7 @@ class Customer < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :entries, dependent: :destroy
   has_many :messages, dependent: :destroy
-  
+
   validates :name, presence: true
   # スコープモジュールを使用したis_delered以外の分を表示させるやり方
   # scope :active, -> { where(is_deleted: false) }
@@ -27,7 +27,7 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
- 
+
   GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest

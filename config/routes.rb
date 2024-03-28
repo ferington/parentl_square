@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   
   devise_for :admin, controllers: {
     sessions: "admin/sessions",
-    registrations: "admin/registrations" #sign_upに遷移しないように
+    registrations: "admin/registrations" #sign_upに遷移しないようにするため
   }
 
    devise_for :customers, controllers: {
