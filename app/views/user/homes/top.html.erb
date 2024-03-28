@@ -1,19 +1,25 @@
 <div class="container mt-4 text-center"> <!-- コンテンツを中央揃え -->
 
-  <% if flash[:notice] %> 
+  <% if flash[:notice] %>
     <div class="alert alert-info">
       <%= flash[:notice] %>
     </div>
   <% end %>
   
+  <% if flash[:alert] %>
+    <div class="alert alert-danger">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
   <!-- 画像を表示 -->
-  <div class="row justify-content-center"> 
+  <div class="row justify-content-center">
     <div class="col-12">
       <%= image_tag "top.jpg", class: "img-fluid", style: "max-width: 80%; height: auto;" %>
     </div>
   </div>
   <br>
-  
+
   <!-- ボタンを配置する行 -->
   <div class="row justify-content-center">
     <div class="col-md-7">

@@ -6,9 +6,10 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :destroy]
     resources :customers, only: [:index, :destroy]
   end
-
+  
   devise_for :admin, controllers: {
-    sessions: "admin/sessions"
+    sessions: "admin/sessions",
+    registrations: "admin/registrations" #sign_upに遷移しないように
   }
 
    devise_for :customers, controllers: {
