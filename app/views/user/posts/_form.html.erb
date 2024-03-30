@@ -26,7 +26,7 @@
 
   <% if user_post.id.nil? %>
     <div class="form-group" id="star">
-      <%= f.label "おすすめ" %>
+      <%= f.label "おすすめ(新規登録時のみ入力できます)" %>
       <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
       <div id="post_raty"></div>
     </div>
