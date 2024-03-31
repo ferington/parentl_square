@@ -14,7 +14,7 @@
         <% elsif request.fullpath.include?("/admin") %>
           <li class="nav-item">
             <%= link_to root_path, class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> Home
+              <i class="fas fa-home"></i> トップページ
             <% end %>
           </li>
           <%# admin用新規登録リンク %>
@@ -45,7 +45,7 @@
           </li>
           <li class="nav-item">
             <%= link_to posts_path, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-blog"></i> 投稿一覧
+              <i class="fa-solid fa-blog"></i> レビュー一覧
             <% end %>
           </li>
           <li class="nav-item">
@@ -56,12 +56,12 @@
         <% else %>
           <li class="nav-item">
             <%= link_to root_path, class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> Home
+              <i class="fas fa-home"></i> トップページ
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to about_path, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-link"></i> 知育菓子について
+              <i class="fa-solid fa-link"></i> おかしのこうか
             <%end %>
           </li>
           <li class="nav-item">
