@@ -33,7 +33,11 @@ Rails.application.routes.draw do
     get "/search", to: "searches#search"
     # 論理削除用のルーティング
     patch  '/customers/withdraw' => 'customers#withdraw'
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      	get "followings" => "relationships#followings", as: "followings"
+  	    get "followers" => "relationships#followers", as: "followers"
+    end
     resources :messages, only: [:create]
     resources :rooms, only: [:create, :index, :show]
     resources :posts do

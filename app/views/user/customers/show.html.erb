@@ -51,7 +51,7 @@
                     </td>
                     <% if current_customer == post.customer %>
                       <td class="align-middle">
-                        <%= link_to '編集', edit_post_path(post), class: "text-white btn btn-warning" %>
+                        <%= link_to '編集', edit_post_path(post), class: "text-white btn btn-primary" %>
                       </td>
                       <td class="align-middle">
                         <%= link_to '削除', post_path(post), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "text-white btn btn-danger" %>

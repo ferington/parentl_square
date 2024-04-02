@@ -2,7 +2,6 @@
   <div class="container-fluid">
     <a class="navbar-brand text-light" href="/admin/sign_in"><i class="fa-brands fa-old-republic"></i>おやこのひろば</a>
 
-
       <ul class="navbar-nav">
         <!--admin側ヘッダー-->
         <% if admin_signed_in? %>
@@ -30,12 +29,19 @@
           </li>
         <!--customer側ヘッダー  -->
         <% elsif customer_signed_in? %>
-          <div class="d-flex justify-content-center mb-2">
-            <%= render "user/searches/form" %>
-          </div>
           <li class="nav-item">
-            <%= link_to  customer_path(current_customer), class: 'nav-link text-light' do %>
+            <%= link_to customer_path(current_customer), class: 'nav-link text-light' do %>
               <i class="fa-solid fa-house-user"></i>マイページ
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to customer_followings_path(customer_id: @customer.id), class: 'nav-link text-light' do %>
+              <i class="fa-solid fa-house-user"></i>フォロー
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to customer_followers_path(customer_id: @customer.id), class: 'nav-link text-light' do %>
+              <i class="fa-solid fa-house-user"></i>フォロワー
             <% end %>
           </li>
           <li class="nav-item">
@@ -76,6 +82,14 @@
           </li>
         <% end %>
       </ul>
+   
+      <% if customer_signed_in? %>
+        <div class='row'>
+          <div class="d-flex justify-content-center mb-2">
+            <%= render "user/searches/form" %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </nav>
