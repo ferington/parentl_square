@@ -38,7 +38,6 @@ class User::PostsController < ApplicationController
   # GET /user/posts/new
   def new
     @user_post = Post.new
-  #  @tag_list = @user_post.tags.pluck(:name).join(',')
   end
 
   # GET /user/posts/1/edit

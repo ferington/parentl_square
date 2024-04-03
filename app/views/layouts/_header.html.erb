@@ -7,13 +7,13 @@
         <% if admin_signed_in? %>
           <li class="nav-item">
             <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+              <i class="fa-solid fa-right-from-bracket fa-fw mr-1"></i>ログアウト
             <% end %>
           </li>
         <% elsif request.fullpath.include?("/admin") %>
           <li class="nav-item">
             <%= link_to root_path, class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> トップページ
+              <i class="fas fa-home fa-fw mr-1"></i>トップページ
             <% end %>
           </li>
           <%# admin用新規登録リンク %>
@@ -24,72 +24,72 @@
           <!--</li>-->
           <li class="nav-item">
             <%= link_to  new_admin_session_path, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-right-to-bracket"></i> ログイン
+              <i class="fa-solid fa-right-to-bracket fa-fw mr-1"></i>ログイン
             <% end %>
           </li>
         <!--customer側ヘッダー  -->
         <% elsif customer_signed_in? %>
-          <li class="nav-item">
-            <%= link_to customer_path(current_customer), class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-house-user"></i>マイページ
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to customer_followings_path(customer_id: @customer.id), class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-house-user"></i>フォロー
-            <% end %>
-          </li>
-          <li class="nav-item">
-            <%= link_to customer_followers_path(customer_id: @customer.id), class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-house-user"></i>フォロワー
-            <% end %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa-solid fa-house-user fa-fw mr-1"></i>マイページ
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to customer_path(current_customer), class: 'dropdown-item' do %>
+                <i class="fa-solid fa-house-user fa-fw mr-1"></i>マイページ
+              <% end %>
+              <%= link_to customer_followings_path(customer_id: @customer.id), class: 'dropdown-item' do %>
+                <i class="fa-solid fa-user-plus fa-fw mr-1"></i>フォロー
+              <% end %>
+              <%= link_to customer_followers_path(customer_id: @customer.id), class: 'dropdown-item' do %>
+                <i class="fa-solid fa-users fa-fw mr-1"></i>フォロワー
+              <% end %>
+            </div>
           </li>
           <li class="nav-item">
             <%= link_to customers_path, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-user-group"></i>ユーザー一覧
+              <i class="fa-solid fa-user-group fa-fw mr-1"></i>ユーザー一覧
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to posts_path, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-blog"></i> レビュー一覧
+              <i class="fa-solid fa-blog fa-fw mr-1"></i>レビュー一覧
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to  destroy_customer_session_path, method: :delete, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+              <i class="fa-solid fa-right-from-bracket fa-fw mr-1"></i>ログアウト
             <% end %>
           </li>
         <% else %>
           <li class="nav-item">
             <%= link_to root_path, class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> トップページ
+              <i class="fas fa-home fa-fw mr-1"></i>トップページ
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to about_path, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-link"></i> おかしのこうか
+              <i class="fa-solid fa-link fa-fw mr-1"></i>おかしのこうか
             <%end %>
           </li>
           <li class="nav-item">
             <%= link_to new_customer_registration_path, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-user-plus"></i> ユーザー登録
+              <i class="fa-solid fa-user-plus fa-fw mr-1"></i>ユーザー登録
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to new_customer_session_path, class: 'nav-link text-light' do %>
-              <i class="fa-solid fa-right-to-bracket"></i></i> ログイン
+              <i class="fa-solid fa-right-to-bracket fa-fw mr-1"></i></i>ログイン
             <% end %>
           </li>
         <% end %>
       </ul>
-   
       <% if customer_signed_in? %>
-        <div class='row'>
           <div class="d-flex justify-content-center mb-2">
             <%= render "user/searches/form" %>
           </div>
-        </div>
-      <% end %>
+      <% end %>   
     </div>
   </div>
 </nav>
+
+

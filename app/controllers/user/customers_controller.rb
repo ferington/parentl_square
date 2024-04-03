@@ -1,5 +1,5 @@
 class User::CustomersController < ApplicationController
-  before_action :authenticate_customer! 
+  before_action :authenticate_customer!
   before_action :correct_user, only: [:edit, :update]
   before_action :ensure_guest_user, only: [:edit]
 
@@ -28,10 +28,10 @@ class User::CustomersController < ApplicationController
       render :edit
     end
   end
-  
+
   def withdraw
     @customer = Customer.find(current_customer.id)
-    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+
     @customer.update(is_deleted: true)
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
@@ -50,7 +50,7 @@ class User::CustomersController < ApplicationController
       redirect_to customer_path(current_customer) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません"
     end
   end
-  
+
   def correct_user
     @customer = Customer.find(params[:id])
     unless @customer == current_customer

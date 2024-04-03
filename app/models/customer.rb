@@ -20,9 +20,6 @@ class Customer < ApplicationRecord
   has_many :followings, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
-  # スコープモジュールを使用したis_delered以外の分を表示させるやり方
-  # scope :active, -> { where(is_deleted: false) }
-
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

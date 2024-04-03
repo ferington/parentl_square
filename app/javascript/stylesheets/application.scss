@@ -6,6 +6,10 @@
   background-color: transparent;
 }
 
+.nav-link.dropdown-toggle {
+  color: white !important; /* !importantを使用して、既存のスタイルより優先させる */
+}
+
 .sidebar {
   background-color: #f5f5f5;
   border-right: 1px solid #ddd;
@@ -53,4 +57,10 @@ footer {
 footer p {
   margin: 0;
   padding: 15px 0;
+}
+
+
+
+.btn-success, .btn-danger {
+  color: white !important; 
 }
