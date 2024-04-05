@@ -7,12 +7,35 @@
 }
 
 .nav-link.dropdown-toggle {
-  color: white !important; /* !importantを使用して、既存のスタイルより優先させる */
+  color: white !important; /* !importantを使用し、優先度を高める */
 }
 
 .sidebar {
   background-color: #f5f5f5;
   border-right: 1px solid #ddd;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+
+  background-color: rgba(255, 193, 64, .8);
+  color: black;
+  width: 100%;
+}
+
+footer p {
+  margin: 0;
+  padding: 15px 0;
 }
 
 
@@ -35,32 +58,21 @@
   height: auto !important;
 }
 
-body, html {
-  height: 100%;
-  margin: 0;
+/* 自身のDM投稿 */
+.chat-messages {
+  background-color: #D3EDF5;
+  padding: 5px;
+  border-radius: 10px;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
+/* 相手のDM投稿 */
+.chat-message {
+  text-align: left;
+  background-color: #F5F5DC;
+  padding: 5px;
+  border-radius: 10px;
 }
-
-footer {
-  margin-top: auto;
-
-  background-color: rgba(255, 193, 64, .8);
-  color: black;
-  width: 100%;
-
-}
-
-footer p {
-  margin: 0;
-  padding: 15px 0;
-}
-
-
 
 .btn-success, .btn-danger {
-  color: white !important; 
+  color: white !important;
 }

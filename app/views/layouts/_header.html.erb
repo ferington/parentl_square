@@ -80,10 +80,10 @@
             <%= link_to new_customer_session_path, class: 'nav-link text-light' do %>
               <i class="fa-solid fa-right-to-bracket fa-fw mr-1"></i></i>ログイン
             <% end %>
-          </li>
         <% end %>
       </ul>
       <% if customer_signed_in? %>
+          </li>
           <div class="d-flex justify-content-center mb-2">
             <%= render "user/searches/form" %>
           </div>
