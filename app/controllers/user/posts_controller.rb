@@ -1,7 +1,7 @@
 class User::PostsController < ApplicationController
   before_action :set_user_post, only: %i[ show edit update destroy ]
   before_action :check_user, only: [:edit]
-  before_action :reject_guest_user, only: [:new, :create, :update, :destroy]
+ 
 
   # GET /user/posts or /user/posts.json
   def index
@@ -113,9 +113,5 @@ class User::PostsController < ApplicationController
       end
     end
     
-    def reject_guest_user
-      if current_customer.guest_user?
-        redirect_to posts_path, alert: 'ゲストユーザーはこの操作を実行できません'
-      end
-    end
+   
 end

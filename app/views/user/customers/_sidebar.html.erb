@@ -24,7 +24,7 @@
       <th>フォロワー</th>
       <th><%= link_to customer.followers.count, customer_followers_path(customer) %></th>
     </tr>
-    <% if customer != current_customer && !customer.guest_user? %>
+    <% if customer != current_customer %>
     <tr>
       <td><%= render "user/relationships/follow_btn", customer: customer, options: { class: "" } %></td>
     </tr>
