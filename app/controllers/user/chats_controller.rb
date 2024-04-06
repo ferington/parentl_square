@@ -41,4 +41,4 @@ class User::ChatsController < ApplicationController
       rendirect_to new_customer_registration_path
     end
   end
-end
+end 
