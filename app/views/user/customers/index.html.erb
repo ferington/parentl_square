@@ -28,7 +28,9 @@
                     <td>フォロー数: <%= customer.followings.count %></td>
                     <td>フォロワー数: <%= customer.followers.count %></td>
                     <td>
-                      <%= render "user/relationships/follow_btn", customer: customer %>
+                      <div id="follow_<%= customer.id %>">
+                        <%= render "user/relationships/follow_btn", customer: customer %>
+                      </div>
                     </td>
                     <td><%= link_to "投稿レビュー一覧", customer_path(customer.id) %></td>
                   </tr>

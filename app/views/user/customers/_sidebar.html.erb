@@ -26,7 +26,9 @@
     </tr>
     <% if customer != current_customer %>
     <tr>
-      <td><%= render "user/relationships/follow_btn", customer: customer, options: { class: "" } %></td>
+      <td id="follow_<%= customer.id %>">
+        <%= render "user/relationships/follow_btn", customer: customer, options: { class: "" } %>
+      </td>
     </tr>
     <tr>
       <td><%= render "user/chats/btn", customer: customer %></td>
