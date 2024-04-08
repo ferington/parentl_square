@@ -1,6 +1,8 @@
-<h2>フォロワーユーザー</h2>
-<% if @customers.exists? %>
-  <%= render "/user/customers/index", customers: @customers %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+<div class="container mt-5">
+  <h2 class="md-4">フォロワーユーザー</h2>
+  <% if @customers.exists? %>
+    <%= render "/user/customers/index", customers: @customers, class: 'list-group' %>
+  <% else %>
+    <p class="text-muted">ユーザーはいません</p>
+  <% end %>
+</div>
