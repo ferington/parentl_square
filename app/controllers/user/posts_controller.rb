@@ -111,7 +111,5 @@ class User::PostsController < ApplicationController
       unless @user_post.customer_id == current_customer.id
         redirect_to posts_path, alert: 'アクセス権限がありません'
       end
-    end
-    
-   
+    end  
 end

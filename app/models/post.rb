@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   has_many :tags, through: :post_tags
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
+  
 
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}

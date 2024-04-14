@@ -3,8 +3,7 @@ class User::PostCommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     comment = current_customer.post_comments.new(post_comment_params)
     comment.post_id = @post.id
-    comment.save
-    #redirect_to request.referer
+    comment.save 
   end
 
   def destroy
@@ -13,7 +12,6 @@ class User::PostCommentsController < ApplicationController
     @user_post = comment.post
     
     comment.destroy
-    #redirect_to Post.find(params[:post_id])
   end
 
   private

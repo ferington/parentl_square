@@ -29,6 +29,12 @@
           </li>
         <!--customer側ヘッダー  -->
         <% elsif customer_signed_in? %>
+        <% if customer_signed_in? %>
+          </li>
+          <div class="d-flex justify-content-center mb-2">
+            <%= render "user/searches/form" %>
+          </div>
+        <% end %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fa-solid fa-house-user fa-fw mr-1"></i>マイページ
@@ -82,12 +88,6 @@
             <% end %>
         <% end %>
       </ul>
-      <% if customer_signed_in? %>
-          </li>
-          <div class="d-flex justify-content-center mb-2">
-            <%= render "user/searches/form" %>
-          </div>
-      <% end %>   
     </div>
   </div>
 </nav>
