@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource
     when Admin
-      admin_homes_path
+      admin_home_path
     when @customer
       posts_path
     else
@@ -28,10 +28,10 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
-  
+
   def set_customer
     @customer = current_customer if customer_signed_in?
   end
-  
-  
+
+
 end
