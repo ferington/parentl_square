@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :destroy]
     resources :customers, only: [:index, :destroy]
   end
-  
+
   devise_for :admin, controllers: {
     sessions: "admin/sessions",
     registrations: "admin/registrations" #sign_upに遷移しないようにするため
@@ -43,7 +43,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     resources :chats, only: [:show, :create, :destroy]
-    
+
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -15,7 +15,7 @@
         <th>登録写真</th>
         <th>ユーザー</th>
         <th>作成日</th>
-        <th colspan="1"></th>    
+        <th colspan="1"></th>
       </tr>
       <% @customers.each do |customer| %>
         <tr>
@@ -28,4 +28,5 @@
        </tr>
      <% end %>
    </table>
+   <%= link_to '戻る',admin_home_path, class: "text-white btn btn-secondary" %>
 </div>
