@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  
   has_rich_text :content
 
   belongs_to :customer
@@ -8,7 +9,6 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   
-
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
   scope :star_count, -> {order(star: :desc)}

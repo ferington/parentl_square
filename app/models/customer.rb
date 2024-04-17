@@ -20,7 +20,6 @@ class Customer < ApplicationRecord
   has_many :customer_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :rooms, through: :user_rooms
-  
 
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -71,7 +70,6 @@ class Customer < ApplicationRecord
   def following?(customer)
     followings.include?(customer)
   end
-
 
   validates :name, presence: true
 

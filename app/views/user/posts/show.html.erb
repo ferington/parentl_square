@@ -35,19 +35,19 @@
         </div>   
       </div>
 
-    <!-- コメントセクション -->
-    <div class="col-md-8">
-      <div class="col-md-8 mt-3">
-        <div class="md-5">
-          <div id="comment_index">
-            <div><%= render "user/post_comments/index", user_post: @user_post %></div>
-          </div>
-          <div>
-            <div><%= render "user/post_comments/comment", user_post: @user_post, post_comment: @post_comment %></div>
+      <!-- コメントセクション -->
+      <div class="col-md-8">
+        <div class="col-md-8 mt-3">
+          <div class="md-5">
+            <div id="comment_index">
+              <div><%= render "user/post_comments/index", user_post: @user_post %></div>
+            </div>
+            <div>
+              <div><%= render "user/post_comments/comment", user_post: @user_post, post_comment: @post_comment %></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
   </div>
 </div>

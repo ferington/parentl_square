@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class User::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
   before_action :reject_customer, only: [:create]
   
   def guest_sign_in
@@ -12,7 +11,6 @@ class User::SessionsController < Devise::SessionsController
   
   private
   
-  #新規投稿場所がわかれば変更する
   def reject_customer
     customer = Customer.find_by(email: params[:customer][:email])
 

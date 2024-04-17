@@ -10,11 +10,13 @@
           <p class="card-text mb-4">
             退会すると、会員登録情報や<br>
             これまでのレビュー投稿文が閲覧できなくなります。<br>
-            退会する場合は、「退会する」をクリックしてください。
+            退会する場合は、「退会する」をクリックしてください。<br>
+
+            ※当サイドでは、一度登録したメールアドレスでの再登録できません。
           </p>
           <div class="d-flex justify-content-center">
-            <%= link_to "退会しない", customer_path(current_customer), class: "text-white btn btn-primary me-2" %>
-            <%= link_to "退会する", customers_withdraw_path, method: :patch, class: "btn btn-danger ms-2", data: { confirm: "本当に退会しますか？" }  %>
+            <%= link_to "退会しない", customer_path(current_customer), class: "text-white btn btn-primary btn-spacing" %>
+            <%= link_to "退会する", customers_withdraw_path, method: :patch, data: { confirm: "本当に退会しますか？" }, class: "btn btn-danger" %>
           </div>
         </div>
       </div>

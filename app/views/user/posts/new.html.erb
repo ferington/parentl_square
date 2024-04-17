@@ -1,25 +1,24 @@
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <h1>レビュー新規投稿</h1>
-            <div class="table-responsive">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <!-- フォームの内容 -->
-                                <%= render 'form', user_post: @user_post %>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-center">
-                                <!-- リンク -->
-                                <%= link_to '戻る', posts_path, class: 'text-white btn btn-primary' %>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1>レビュー新規投稿</h1>
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>
+                  <%= render 'form', user_post: @user_post %>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <%= link_to '戻る', posts_path, class: 'text-white btn btn-primary' %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+
     </div>
+  </div>
 </div>

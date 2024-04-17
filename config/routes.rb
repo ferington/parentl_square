@@ -23,16 +23,15 @@ Rails.application.routes.draw do
 
   namespace :admin do
 
-
   end
+
   scope module: :user do
     root to: 'homes#top'
     get "about" => "homes#about", as:"about"
     get '/search_tag', to: 'posts#search_tag'
     get  '/customers/check' => 'customers#check'
     get "/search", to: "searches#search"
-    # 論理削除用のルーティング
-    patch  '/customers/withdraw' => 'customers#withdraw'
+    patch  '/customers/withdraw' => 'customers#withdraw' # 論理削除用のルーティング
     resources :customers, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       	get "followings" => "relationships#followings", as: "followings"
@@ -43,9 +42,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     resources :chats, only: [:show, :create, :destroy]
-
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
 end

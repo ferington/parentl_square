@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_customer
 
-
   def after_sign_in_path_for(resource)
     case resource
     when Admin
@@ -22,7 +21,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   protected
 
   def configure_permitted_parameters
@@ -32,6 +30,4 @@ class ApplicationController < ActionController::Base
   def set_customer
     @customer = current_customer if customer_signed_in?
   end
-
-
 end
