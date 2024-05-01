@@ -19,19 +19,16 @@ class Post < ApplicationRecord
   end
 
   def save_tags(tags)
-  current_tags = self.tags.pluck(:name) # 現在のタグ名を取得
-  old_tags = current_tags - tags # 削除されるべき古いタグ
-  new_tags = tags - current_tags # 新しく追加されるタグ
+  current_tags = self.tags.pluck(:name) 
+  old_tags = current_tags - tags 
+  new_tags = tags - current_tags 
 
-  # 古いタグを削除
   old_tags.each do |old_name|
     self.tags.delete Tag.find_by(name: old_name)
   end
 
-  # 新しいタグを追加
   new_tags.each do |new_name|
     tag = Tag.find_or_create_by(name: new_name)
-    # PostTag 結合テーブルを直接確認し、重複がないことを確認してから追加
     unless PostTag.exists?(post_id: self.id, tag_id: tag.id)
       self.tags << tag
     end
