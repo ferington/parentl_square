@@ -1,8 +1,7 @@
 class User::PostsController < ApplicationController
   before_action :set_user_post, only: %i[ show edit update destroy ]
   before_action :check_user, only: [:edit]
-  before_action :set_user_post, only: %i[ show edit update destroy ]
-  before_action :check_user, only: [:edit]
+ 
 
   # GET /user/posts or /user/posts.json
   def index
@@ -112,5 +111,5 @@ class User::PostsController < ApplicationController
       unless @user_post.customer_id == current_customer.id
         redirect_to posts_path, alert: 'アクセス権限がありません'
       end
-    end
+    end  
 end
